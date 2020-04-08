@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChiralJobs</title>
+</head>
+<body>
+    <h1>Welcome to ChiralJobs</h1>
+    <a class="mr-2" href={{ url_for('posts.post_job') }}>Post a job</a></br>
+    </br>
+    {% for post in posts %}
+        <!-- {{ post.days_since_post, post.date_str, post.title, post.org_name, post.job_location }}</br> -->
+        <a class="mr-2" href="{{ url_for('posts.view_job', post_id=post.id) }}">{{ 'Posted: ', post.days_since_post, post.date_str, post.title, post.org_name, post.job_location }}</a></br>
+        <!-- <small class="text-muted">{{ post.date_str }}</small> -->
+    {% endfor %}
+</body>
+</html>

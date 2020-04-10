@@ -1,5 +1,8 @@
 from datetime import datetime
 from app import db
+from config import Config
+from flask_login import UserMixin
+from app import db, login_manager
 
 class Posts(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -17,3 +20,20 @@ class Posts(db.Model):
                 Date posted: {self.date_posted},\
                 title: {self.title},\
                 Apply Here email: {self.apply_here_email}>'
+
+
+class User(UserMixin):
+    pass
+
+
+credentials = {'username': Config.APP_USERNAME,
+               'password': Config.APP_PASSWORD}
+
+
+# # decorator lets login_manager package find the user in the session
+@login_manager.user_loader
+def load_user(username):
+    if username != credentials['username']:
+        return None
+    user = User()  # UserMixin class contains methods needed by flask-login
+    return user

@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template
+from flask_login import current_user
 from app.models import Posts
 from datetime import datetime
 
@@ -6,6 +7,11 @@ main = Blueprint('main', __name__)
 
 @main.route('/')
 def home():
+    # make it so you cannot view home page if logged in
+    # so that you don't forget to logout
+    if current_user.is_authenticated:
+        return render_template('logged_in.html')
+
     posts = Posts.query.all()
 
     # not optimal. Should filter in the database query

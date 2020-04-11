@@ -1,113 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChiralJobs: Post a job</title>
-</head>
-<body>
-    <form method="POST" action="">
-        <!-- hidden_tag() adds a csf token to protect from certain attacks -->
-        {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <div class="form-group">
-                {{ form.title.label(class="form-control-label") }}
-                {% if form.title.errors %}
-                    {{ form.title(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.title.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
+    {% extends "layout.html" %}
+    {% block content %}
+	<section class="inner-banner" style="backend:#242c36 url(https://via.placeholder.com/1920x600)no-repeat;">
+		<div class="container">
+			<div class="caption">
+                <h2>Post a job</h2>
+                <p>Find candidates with expertise in chemistry, programming, and datascience</p>
+			</div>
+		</div>
+	</section>
+    <section class="login-wrapper">
+        <div class="container">
+			<div class="col-md-6 col-sm-8">
+                <form method="POST" action="">
+                    <!-- hidden_tag() adds a csf token to protect from certain attacks -->
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <div class="form-group">
+                            {{ form.title.label(class="form-group-label") }}
+                            {% if form.title.errors %}
+                                {{ form.title(class="form-group form-group-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.title.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.title(class="form-group form-group-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.poster_email.label(class="form-group-label") }}
+                            {% if form.poster_email.errors %}
+                                {{ form.poster_email(class="form-group form-group-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.poster_email.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.poster_email(class="form-group form-group-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.body.label(class="form-group-label") }}
+                            {% if form.body.errors %}
+                                {{ form.body(class="form-group form-group-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.body.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.body(class="form-group form-group-lg", rows="10", cols="100") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.apply_here_email.label(class="form-group-label") }}
+                            {% if form.apply_here_email.errors %}
+                                {{ form.apply_here_email(class="form-group form-group-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.apply_here_email.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.apply_here_email(class="form-group form-group-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.link_to_application_site.label(class="form-group-label") }}
+                            {% if form.apply_here_email.errors %}
+                                {{ form.apply_here_email(class="form-group form-group-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.apply_here_email.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.link_to_application_site(class="form-group form-group-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.job_location.label(class="form-group-label") }}
+                            {% if form.job_location.errors %}
+                                {{ form.job_location(class="form-group form-group-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.job_location.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.job_location(class="form-group form-group-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.org_name.label(class="form-group-label") }}
+                            {% if form.org_name.errors %}
+                                {{ form.org_name(class="form-group form-group-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.org_name.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.org_name(class="form-group form-group-lg") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        {{ form.submit(class="btn btn-primary") }}
                     </div>
-                {% else %}
-                    {{ form.title(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.poster_email.label(class="form-control-label") }}
-                {% if form.poster_email.errors %}
-                    {{ form.poster_email(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.poster_email.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.poster_email(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.body.label(class="form-control-label") }}
-                {% if form.body.errors %}
-                    {{ form.body(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.body.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.body(class="form-control form-control-lg", rows="10", cols="100") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.apply_here_email.label(class="form-control-label") }}
-                {% if form.apply_here_email.errors %}
-                    {{ form.apply_here_email(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.apply_here_email.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.apply_here_email(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.link_to_application_site.label(class="form-control-label") }}
-                {% if form.apply_here_email.errors %}
-                    {{ form.apply_here_email(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.apply_here_email.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.link_to_application_site(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.job_location.label(class="form-control-label") }}
-                {% if form.job_location.errors %}
-                    {{ form.job_location(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.job_location.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.job_location(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.org_name.label(class="form-control-label") }}
-                {% if form.org_name.errors %}
-                    {{ form.org_name(class="form-control form-control-lg is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.org_name.errors %}
-                        <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.org_name(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-        </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info") }}
-        </div>
 
 
-    </form>
-
+                </form>
+    </div>
+    </div>
+    </section>
 </body>
 </html>
+{% endblock content %}

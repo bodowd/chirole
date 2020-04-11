@@ -17,7 +17,7 @@
 							<a href="{{ url_for('posts.view_job', post_id=post.id) }}">
 							<div class="col-md-10 col-sm-10">
 								<div class="company-content">
-									<h3>{{ post.title }}<span class="full-time">Full Time</span></h3>
+									<h3>{{ post.title }}</h3>
 									<p><span class="company-name"><i class="fa fa-briefcase"></i>{{ post.org_name }}</span><span class="company-location"><i class="fa fa-map-marker"></i>{{ post.job_location }}</span><span class="package"><i class="fa fa-calendar"></i>{{'Posted: '}}{{ post.days_since_post }}</span></p>
 								</div>
 							</div></a>
@@ -27,8 +27,4 @@
 					{% endfor %}
 			</div>
 		</div>
-			</div>
-		</footer>
-    </body>
-</html>
 {% endblock content %}

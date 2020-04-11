@@ -8,12 +8,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- All Plugin Css -->
-		<link rel="stylesheet" href="static/plugins.css">
-
-		<!-- Style & Common Css -->
-		<link rel="stylesheet" href="static/common.css">
-        <link rel="stylesheet" href="static/main.css">
+		<link href="{{url_for('static', filename='plugins.css')}}" rel="stylesheet">
+		<link href="{{url_for('static', filename='common.css')}}" rel="stylesheet">
+		<link href="{{url_for('static', filename='main.css')}}" rel="stylesheet">
 
     </head>
 

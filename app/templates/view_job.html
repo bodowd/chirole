@@ -1,14 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ChiralJobs</title>
-</head>
-<body>
-    <h1>{{ job_post.title }}</h1>
-    <p>{{ job_post.body }}</p>
-    <p>{{ job_post.apply_here_email }}</p>
-    <a href="{{ 'http://'+job_post.link_to_application_site }}">{{ job_post.link_to_application_site }}</a>
-</body>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+<link href="{{url_for('static', filename='plugins.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='common.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='main.css')}}" rel="stylesheet">
+    <section class="profile-detail">
+		<div class="container">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="basic-information">
+						<div class="col-md-3 col-sm-3">
+						 <img src="img/microsoft.png" alt="" class="img-responsive">
+						</div>
+						<div class="col-md-9 col-sm-9">
+							<div class="profile-content">
+                                    <h1>{{ job_post.title }}</h1>
+                                    <p>{{ job_post.body }}</p>
+                                    <p>{{ job_post.apply_here_email }}</p>
+                                    <a href="{{ 'http://'+job_post.link_to_application_site }}">{{ job_post.link_to_application_site }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}

@@ -236,6 +236,7 @@ display:block;
 
 .basic-information p{
 font-size:17px;
+white-space: pre-wrap;
 }
 .information{
 margin:0;

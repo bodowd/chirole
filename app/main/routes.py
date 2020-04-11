@@ -35,3 +35,7 @@ def home():
 
     # reverse so that the newest posts are shown at the top of the list
     return render_template('home.html', posts=reversed(posts_for_display))
+
+@main.route('/contact')
+def contact():
+    return render_template('contact.html')

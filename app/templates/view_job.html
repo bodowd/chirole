@@ -12,8 +12,12 @@
 							<div class="profile-content">
                                     <h1>{{ job_post.title }}</h1>
                                     <p>{{ job_post.body }}</p>
-                                    <p>{{ job_post.apply_here_email }}</p>
-                                    <a href="{{ 'http://'+job_post.link_to_application_site }}">{{ job_post.link_to_application_site }}</a>
+                                    {% if job_post.apply_here_email %}
+                                        <p>Inquire here: {{ job_post.apply_here_email }}</p>
+                                    {% endif %}
+                                    {% if job_post.link_to_application_site %}
+                                        <a href="{{ 'http://'+job_post.link_to_application_site }}">Apply here: {{ job_post.link_to_application_site }}</a>
+                                    {% endif %}
                             </div>
                         </div>
                     </div>

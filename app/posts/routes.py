@@ -3,7 +3,7 @@ from flask import Blueprint, render_template, redirect, url_for, flash, request
 from flask_login import current_user, login_required
 from app.models import Posts
 from app import db
-from app.posts.forms import JobPostForm
+from app.posts.forms import JobPostForm, DeleteJobForm
 
 posts = Blueprint('posts', __name__)
 
@@ -77,3 +77,19 @@ def edit_job(post_id):
 def view_job(post_id):
     job_post = Posts.query.get_or_404(post_id)
     return render_template('view_job.html', job_post=job_post)
+
+@posts.route('/delete_job/<int:post_id>', methods=['GET','POST'])
+@login_required
+def delete_job(post_id):
+    form = DeleteJobForm()
+    job_post = Posts.query.get_or_404(post_id)
+    print(form.accept, form.delete)
+    if form.validate_on_submit():
+        print('valid')
+        Posts.query.filter_by(id=post_id).delete()
+        db.session.commit()
+        flash('Post deleted')
+        return redirect(url_for('main.home'))
+
+
+    return render_template('delete_job.html', job_post=job_post, form=form)

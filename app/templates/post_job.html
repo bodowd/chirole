@@ -105,11 +105,23 @@
                                 {{ form.org_name(class="form-control") }}
                             {% endif %}
                         </div>
+                        <div class="form-group">
+                            {{ form.accept.label(class="form-group-label") }}
+                            {% if form.accept.errors %}
+                                {{ form.accept(class="form-group form-group-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.accept.errors %}
+                                    <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.accept(class="form-control") }}
+                            {% endif %}
+                        </div>
+                        <p>* required fields</p>
                     <div class="form-group">
                         {{ form.submit(class="btn btn-primary") }}
                     </div>
-
-
                 </form>
     </div>
     </div>

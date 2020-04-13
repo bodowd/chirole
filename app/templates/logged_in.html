@@ -7,5 +7,12 @@
 </head>
 <body>
     <h1>You're logged in.</h1>
+
+
+    {% for post in posts %}
+    <a href="{{ url_for('posts.view_job', post_id=post.id) }}">
+            <h3>{{ post.title }}</h3>
+            <p><span class="company-name"><i class="fa fa-briefcase"></i>{{ post.org_name }}</span><span class="company-location"><i class="fa fa-map-marker"></i>{{ post.job_location }}</span><span class="package"><i class="fa fa-calendar"></i>{{'Posted: '}}{{ post.days_since_post }}</span></p>
+    {% endfor %}
 </body>
 </html>

@@ -31,7 +31,7 @@ def post_job():
 
         db.session.add(post_to_db)
         db.session.commit()
-        flash('Your job posting has been submitted!')
+        flash('Your job posting has been submitted!', 'success')
         return redirect(url_for('main.home'))
     return render_template('post_job.html', title='Post a job', form=form)
 
@@ -88,7 +88,7 @@ def delete_job(post_id):
         print('valid')
         Posts.query.filter_by(id=post_id).delete()
         db.session.commit()
-        flash('Post deleted')
+        flash('Post deleted', 'success')
         return redirect(url_for('main.home'))
 
 

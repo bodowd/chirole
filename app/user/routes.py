@@ -33,8 +33,7 @@ def login():
             login_user(user, remember=form.remember.data)
             # return the user, after they log in, to the page they were trying to get to but weren't logged in
             next_page = request.args.get('next')
-            flash('You have successfully logged in. Welcome back.', 'success')
-            return render_template('logged_in.html')
+            return redirect(url_for('main.home'))
         else:
             # danger is bootstrap class
             flash('Login Unsuccessful. Please check email and password', 'danger')

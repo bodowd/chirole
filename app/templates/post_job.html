@@ -1,22 +1,13 @@
     {% extends "layout.html" %}
     {% block content %}
-{% with messages = get_flashed_messages() %}
-   {% if messages %}
-     <ul class="flashes">
-        {% for message in messages %}
-         <div class="message_flash">{{ message }}</div>
-        {% endfor %}
-    </ul>
-  {% endif %}
- {% endwith %}
 	<section class="inner-banner" style="backend:#242c36 url(https://via.placeholder.com/1920x600)no-repeat;">
 		<div class="container">
 			<div class="caption">
-                <h2>Post a job</h2>
-                </br>
-                <p>Avoid the noise of general job boards and speak directly to your target candidates</p>
+                <h1 style="color: #ffffff">Post a job</h1>
                 </br>
                 <p>Find candidates with expertise in chemistry, programming, and datascience</p>
+                </br>
+                <p>Avoid the noise of general job boards and speak directly to your target candidates</p>
                 </br>
                 <p>$115 USD to display your job advertisement on the home page for 30 days</p>
             </div>

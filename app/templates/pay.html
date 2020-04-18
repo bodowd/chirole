@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+<div class="col-md-8 col-sm-8">
+    <h2>One last step to finalize!</h2>
+    <h4>${{ amount_usd }} to post job for 30 days</h4>
+    <form action="/charge/{{ post_id }}" method="post">
+      <script
+        src="https://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-key="{{ key }}"
+        data-description="A Flask Charge"
+        data-amount="{{ amount_cents }}"
+        data-locale="auto"
+      ></script>
+    </form>
+  </div>
+</div>
+{% endblock content %}

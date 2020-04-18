@@ -26,7 +26,7 @@ def home():
             p.days_since_post = f'{days_since} days ago'
 
         # not optimal. Should filter in the database query
-        if days_since <= 30:
+        if days_since <= 30 and p.paid:
             posts_for_display.append(p)
 
     # make it so you cannot view home page if logged in

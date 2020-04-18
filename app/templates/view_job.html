@@ -14,7 +14,7 @@
                                     <h4>{{ job_post.org_name}}, {{ job_post.job_location }}</h4>
                                     <p>{{ job_post.body }}</p>
                                     {% if job_post.apply_here_email %}
-                                        <p>Inquire here: {{ job_post.apply_here_email }}</p>
+                                        <h4>Inquire here: {{ job_post.apply_here_email }}</h4>
                                     {% endif %}
                                     {% if job_post.link_to_application_site %}
                                         <h4><a href="{{ job_post.link_to_application_site }}">Apply here</a></h4>

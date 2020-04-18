@@ -16,6 +16,7 @@ class Posts(db.Model):
     link_to_application_site = db.Column(db.String(100), unique=False)
     job_location = db.Column(db.String(120), unique=False)
     org_name = db.Column(db.String(120), unique=False)
+    paid = db.Column(db.Boolean)
 
     def __repr__(self):
         return f'<Poster email: {self.poster_email},\

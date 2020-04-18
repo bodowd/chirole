@@ -4,6 +4,17 @@ from flask_login import current_user, login_required
 from app.models import Posts
 from app import db
 from app.posts.forms import JobPostForm, DeleteJobForm
+from config import Config
+import stripe
+import os
+
+stripe_keys = {
+    'secret_key': os.environ['STRIPE_SECRET_KEY'],
+    'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
+}
+
+stripe.api_key = stripe_keys['secret_key']
+
 
 posts = Blueprint('posts', __name__)
 
@@ -27,13 +38,15 @@ def post_job():
                            job_location=job_location,
                            date_posted=date_posted,
                            link_to_application_site=link_to_application_site,
-                           org_name=org_name)
+                           org_name=org_name,
+                           paid=False)
 
         db.session.add(post_to_db)
         db.session.commit()
-        flash('Your job posting has been submitted!', 'success')
-        return redirect(url_for('main.home'))
-    return render_template('post_job.html', title='Post a job', form=form)
+        # flash('Thank you, your job posting has been submitted!', 'success')
+        return redirect(url_for('posts.pay', post_id=post_to_db.id))
+    return render_template('post_job.html', title='Post a job', form=form,
+                          charge_amount_usd=Config.CHARGE_AMOUNT_USD)
 
 @posts.route('/edit_job/<int:post_id>', methods=['GET', 'POST'])
 @login_required
@@ -83,9 +96,7 @@ def view_job(post_id):
 def delete_job(post_id):
     form = DeleteJobForm()
     job_post = Posts.query.get_or_404(post_id)
-    print(form.accept, form.delete)
     if form.validate_on_submit():
-        print('valid')
         Posts.query.filter_by(id=post_id).delete()
         db.session.commit()
         flash('Post deleted', 'success')
@@ -93,3 +104,49 @@ def delete_job(post_id):
 
 
     return render_template('delete_job.html', job_post=job_post, form=form)
+
+@posts.route('/pay/<int:post_id>')
+def pay(post_id):
+    job_post = Posts.query.get_or_404(post_id)
+    if not job_post.paid:
+        charge_amount_dollars = Config.CHARGE_AMOUNT_USD
+        charge_amount_cents = charge_amount_dollars*100
+        return render_template('pay.html', key=stripe_keys['publishable_key'],
+                            amount_usd=charge_amount_dollars,
+                            amount_cents=charge_amount_cents,
+                            post_id=post_id)
+    else:
+        flash('This job post is already paid for!', 'success')
+        return redirect(url_for('main.home'))
+
+
+@posts.route('/charge/<int:post_id>', methods=['POST'])
+def charge(post_id):
+    try:
+        # amount in cents
+        amount = Config.CHARGE_AMOUNT_USD*100
+
+        customer = stripe.Customer.create(
+            email=request.form['stripeEmail'],
+            source=request.form['stripeToken']
+        )
+
+        stripe.Charge.create(
+            customer=customer.id,
+            amount=amount,
+            currency='usd',
+            description='Chirole Job Post Charge',
+            receipt_email=customer.email
+        )
+
+        job_post = Posts.query.get_or_404(post_id)
+        job_post.paid = True
+        db.session.commit()
+
+        flash('Thank you, your job posting has been submitted!', 'success')
+        return redirect(url_for('main.home'))
+        # return render_template('charge.html', amount=amount)
+    except stripe.error.StripeError:
+        Posts.query.filter_by(id=post_id).delete()
+        db.session.commit()
+        return render_template('error.html')

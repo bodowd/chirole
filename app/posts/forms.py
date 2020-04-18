@@ -10,7 +10,7 @@ class JobPostForm(FlaskForm):
     title = StringField('Title of Job Posting*', validators=[DataRequired()])
     body = TextAreaField('Job posting content*', validators=[DataRequired()],
                     widget=TextArea())
-    apply_here_email = StringField('Email applicant can use to apply/inquire (if applicable)',
+    apply_here_email = StringField('Email that applicant can use to apply/inquire (if applicable)',
                                    validators=[Email(), Optional()])
     link_to_application_site = StringField('Link to your application site (if applicable)',
                                            validators=[Optional()])

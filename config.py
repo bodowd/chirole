@@ -9,3 +9,4 @@ class Config:
     SECRET_KEY = os.environ['SECRET_KEY']
     APP_USERNAME = os.environ['APP_USERNAME']
     APP_PASSWORD = os.environ['APP_PASSWORD']
+    CHARGE_AMOUNT_USD = 115

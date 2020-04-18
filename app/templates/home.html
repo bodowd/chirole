@@ -3,7 +3,8 @@
 		<section class="jobs">
 		<div class="container">
 			<div class="row heading">
-				<h2>Find roles that are seeking chemistry, programming, and data science expertise</h2>
+				<h2>Find roles that blend <strong>chemistry</strong> expertise with <strong>programming</strong>,
+					<strong>data science</strong>, and <strong>machine learning</strong></h2>
 			</div>
 			<div class="companies">
 					{% for post in posts %}
@@ -15,7 +16,7 @@
 								</div>
 							</div> -->
 							<a href="{{ url_for('posts.view_job', post_id=post.id) }}">
-							<div class="col-md-10 col-sm-10">
+							<div class="col-md-10 col-sm-8">
 								<div class="company-content">
 									<h3>{{ post.title }}</h3>
 									<p><span class="company-name"><i class="fa fa-briefcase"></i>{{ post.org_name }}</span><span class="company-location"><i class="fa fa-map-marker"></i>{{ post.job_location }}</span><span class="package"><i class="fa fa-calendar"></i>{{'Posted: '}}{{ post.days_since_post }}</span></p>

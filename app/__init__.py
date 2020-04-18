@@ -30,4 +30,7 @@ def create_app(config_class=Config):
     from app.user.routes import user
     app.register_blueprint(user)
 
+    from app.errors.handlers import errors
+    app.register_blueprint(errors)
+
     return app

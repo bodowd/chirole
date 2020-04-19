@@ -5,7 +5,7 @@ from flask_login import UserMixin
 from app import db, login_manager
 
 class Posts(db.Model):
-    __tablename__ = 'posts'
+    # __tablename__ = 'posts' # commented out makes it work with flask db upgrade on the linux server...?
 
     id = db.Column(db.Integer, primary_key=True)
     poster_email = db.Column(db.String(120), unique=False)

@@ -10,7 +10,7 @@ import os
 from urllib.parse import urlparse
 
 stripe_keys = {
-    'secret_key': Config.STRIPE_SECRET_KEY
+    'secret_key': Config.STRIPE_SECRET_KEY,
     'publishable_key': Config.STRIPE_PUBLISHABLE_KEY
 }
 

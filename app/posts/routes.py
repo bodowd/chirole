@@ -10,8 +10,8 @@ import os
 from urllib.parse import urlparse
 
 stripe_keys = {
-    'secret_key': os.environ['STRIPE_SECRET_KEY'],
-    'publishable_key': os.environ['STRIPE_PUBLISHABLE_KEY']
+    'secret_key': Config.STRIPE_SECRET_KEY
+    'publishable_key': Config.STRIPE_PUBLISHABLE_KEY
 }
 
 stripe.api_key = stripe_keys['secret_key']

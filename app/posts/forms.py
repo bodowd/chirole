@@ -13,7 +13,7 @@ class JobPostForm(FlaskForm):
     apply_here_email = StringField('Email that applicant can use to apply/inquire (if applicable)',
                                    validators=[Email(), Optional()])
     link_to_application_site = StringField('Link to your application site (if applicable) \
-        please make sure it starts with `http://www` i.e. http://www.yourwebsite.com',
+        Needs to include `http://www` i.e. http://www.yourwebsite.com',
                                            validators=[Optional(), URL()])
     job_location = StringField('Job location(s)*', validators=[DataRequired()])
     org_name = StringField('Organization or Company name*',

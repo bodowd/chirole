@@ -7,6 +7,7 @@ from app.posts.forms import JobPostForm, DeleteJobForm
 from config import Config
 import stripe
 import os
+from urllib.parse import urlparse
 
 stripe_keys = {
     'secret_key': os.environ['STRIPE_SECRET_KEY'],
@@ -45,6 +46,8 @@ def post_job():
         db.session.commit()
         # flash('Thank you, your job posting has been submitted!', 'success')
         return redirect(url_for('posts.pay', post_id=post_to_db.id))
+    else:
+        flash('Some fields were invalid, please check again', 'danger')
     return render_template('post_job.html', title='Post a job', form=form,
                           charge_amount_usd=Config.CHARGE_AMOUNT_USD)
 
@@ -83,7 +86,8 @@ def edit_job(post_id):
         form.org_name.data = job_post.org_name
         form.link_to_application_site.data = job_post.link_to_application_site
 
-    return render_template('post_job.html', title='Edit job posting', form=form)
+    return render_template('post_job.html', title='Edit job posting', form=form,
+                           charge_amount_usd=Config.CHARGE_AMOUNT_USD)
 
 
 @posts.route('/view_job/<int:post_id>', methods=['GET', 'POST'])

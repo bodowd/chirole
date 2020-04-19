@@ -73,10 +73,10 @@
                         </div>
                         <div class="form-group">
                             {{ form.link_to_application_site.label(class="form-group-label") }}
-                            {% if form.apply_here_email.errors %}
-                                {{ form.apply_here_email(class="form-group form-group-lg is-invalid") }}
+                            {% if form.link_to_application_site.errors %}
+                                {{ form.link_to_application_site(class="form-group form-group-lg is-invalid") }}
                                 <div class="invalid-feedback">
-                                    {% for error in form.apply_here_email.errors %}
+                                    {% for error in form.link_to_application_site.errors %}
                                     <span>{{ error }}</span>
                                     {% endfor %}
                                 </div>

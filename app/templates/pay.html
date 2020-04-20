@@ -3,6 +3,9 @@
 <div class="container">
 <div class="col-md-8 col-sm-8">
     <h2>One last step to finalize!</h2>
+    <p>Payment is handled by <a href="http://www.stripe.com">Stripe</a> and upon successful payment, your job post
+    will be displayed for 30 days on the home page.</p>
+    <p>Thank you!</p>
     <h4>${{ amount_usd }} to post job for 30 days</h4>
     <form action="/charge/{{ post_id }}" method="post">
       <script

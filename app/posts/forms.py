@@ -1,23 +1,23 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import SubmitField, StringField, TextAreaField, BooleanField
-from wtforms.validators import DataRequired, Email, Optional, URL
+from wtforms.validators import DataRequired, Email, Optional, URL, Length
 from wtforms.widgets import TextArea
 
 class JobPostForm(FlaskForm):
     poster_email = StringField('Your email for us to contact you*',
-                               validators=[DataRequired(), Email()])
-    title = StringField('Title of Job Posting*', validators=[DataRequired()])
+                               validators=[DataRequired(), Email(), Length(max=120)])
+    title = StringField('Title of Job Posting*', validators=[DataRequired(), Length(max=140)])
     body = TextAreaField('Job posting content*', validators=[DataRequired()],
                     widget=TextArea())
     apply_here_email = StringField('Email that applicant can use to apply/inquire (if applicable)',
-                                   validators=[Email(), Optional()])
+                                   validators=[Email(), Optional(), Length(max=120)])
     link_to_application_site = StringField('Link to your application site (if applicable) \
         Needs to include `http://www` i.e. http://www.yourwebsite.com',
-                                           validators=[Optional(), URL()])
-    job_location = StringField('Job location(s)*', validators=[DataRequired()])
+                                           validators=[Optional(), URL(), Length(max=100)])
+    job_location = StringField('Job location(s)*', validators=[DataRequired(), Length(max=120)])
     org_name = StringField('Organization or Company name*',
-                                    validators=[DataRequired()])
+                                    validators=[DataRequired(), Length(max=120)])
     accept = BooleanField('I accept the terms of service and would like to \
          submit this job post to be posted for 30 days from time of payment.*',
           validators=[DataRequired()])

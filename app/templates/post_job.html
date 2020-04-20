@@ -111,6 +111,8 @@
                             {% endif %}
                         </div>
                         <div class="form-group">
+			    <p><a href={{ url_for('main.tos') }}>Terms of Service</a></p>
+			    <p><a href={{ url_for('main.privacy') }}>Privacy Policy</a></p>
                             {{ form.accept.label(class="form-group-label") }}
                             {% if form.accept.errors %}
                                 {{ form.accept(class="form-group form-group-lg is-invalid") }}

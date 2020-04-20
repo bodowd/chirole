@@ -18,10 +18,10 @@ class JobPostForm(FlaskForm):
     job_location = StringField('Job location(s)*', validators=[DataRequired()])
     org_name = StringField('Organization or Company name*',
                                     validators=[DataRequired()])
-    accept = BooleanField('I have reviewed my job posting and would like to \
-         submit it for posting for 30 days from time of payment.*',
+    accept = BooleanField('I accept the terms of service and would like to \
+         submit this job post to be posted for 30 days from time of payment.*',
           validators=[DataRequired()])
-    submit = SubmitField('Submit job posting')
+    submit = SubmitField('Submit job posting and go to payment')
 
 class DeleteJobForm(FlaskForm):
     accept = BooleanField('Delete the post?', validators=[DataRequired()])

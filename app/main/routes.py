@@ -40,3 +40,11 @@ def home():
 @main.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@main.route('/tos')
+def tos():
+    return render_template('tos.html')
+
+@main.route('/privacy')
+def privacy():
+    return render_template('privacy.html')

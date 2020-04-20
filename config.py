@@ -13,6 +13,6 @@ class Config:
     SECRET_KEY = config.get('SECRET_KEY')
     APP_USERNAME = config.get('APP_USERNAME')
     APP_PASSWORD = config.get('APP_PASSWORD')
-    CHARGE_AMOUNT_USD = 115
+    CHARGE_AMOUNT_USD = 155
     STRIPE_PUBLISHABLE_KEY = config.get('STRIPE_PUBLISHABLE_KEY')
     STRIPE_SECRET_KEY = config.get('STRIPE_SECRET_KEY')

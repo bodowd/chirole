@@ -18,8 +18,7 @@ class JobPostForm(FlaskForm):
     job_location = StringField('Job location(s)*', validators=[DataRequired(), Length(max=120)])
     org_name = StringField('Organization or Company name*',
                                     validators=[DataRequired(), Length(max=120)])
-    accept = BooleanField('I accept the terms of service and would like to \
-         submit this job post to be posted for 30 days from time of payment.*',
+    accept = BooleanField('I agree to the terms of service and privacy policy.*',
           validators=[DataRequired()])
     submit = SubmitField('Submit job posting and go to payment')
 

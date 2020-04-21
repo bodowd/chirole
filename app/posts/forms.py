@@ -20,7 +20,7 @@ class JobPostForm(FlaskForm):
                                     validators=[DataRequired(), Length(max=120)])
     accept = BooleanField('I agree to the terms of service and privacy policy.*',
           validators=[DataRequired()])
-    submit = SubmitField('Submit job posting and go to payment')
+    submit = SubmitField('Submit job posting')
 
 class DeleteJobForm(FlaskForm):
     accept = BooleanField('Delete the post?', validators=[DataRequired()])

@@ -44,7 +44,7 @@ def post_job():
 
         db.session.add(post_to_db)
         db.session.commit()
-        # flash('Thank you, your job posting has been submitted!', 'success')
+        flash('Thank you, your job posting has been submitted!', 'success')
         return redirect(url_for('main.home', post_id=post_to_db.id))
     return render_template('post_job.html', title='Post a job', form=form,
                           charge_amount_usd=Config.CHARGE_AMOUNT_USD)

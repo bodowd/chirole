@@ -8,7 +8,7 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def home():
 
-    posts = Posts.query.order_by(Posts.date_posted.desc()).all()
+    posts = Posts.query.order_by(Posts.id.desc()).all()
     print(posts)
 
     # not optimal. Should filter in the database query

@@ -8,7 +8,8 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def home():
 
-    posts = Posts.query.all()
+    posts = Posts.query.order_by(Posts.date_posted.desc()).all()
+    print(posts)
 
     # not optimal. Should filter in the database query
     posts_for_display = []
@@ -32,10 +33,10 @@ def home():
     # make it so you cannot view home page if logged in
     # so that you don't forget to logout
     if current_user.is_authenticated:
-        return render_template('logged_in.html', posts=reversed(posts_for_display))
+        return render_template('logged_in.html', posts=posts_for_display)
 
     # reverse so that the newest posts are shown at the top of the list
-    return render_template('home.html', posts=reversed(posts_for_display))
+    return render_template('home.html', posts=posts_for_display)
 
 @main.route('/about')
 def about():

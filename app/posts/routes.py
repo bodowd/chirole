@@ -49,6 +49,8 @@ def post_job():
     return render_template('post_job.html', title='Post a job', form=form,
                           charge_amount_usd=Config.CHARGE_AMOUNT_USD)
 
+# TODO: Add a route that allows me to post for free so that I don't have to switch between the free version and real version live on the site
+
 @posts.route('/edit_job/<int:post_id>', methods=['GET', 'POST'])
 @login_required
 def edit_job(post_id):

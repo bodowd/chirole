@@ -10,20 +10,25 @@
                             </div> -->
                             <div class="col-md-12 col-sm-9">
                                 <div class="profile-content">
-                                    <h4>Find candidates who know how to apply software development, machine learning, and data science to chemistry problems</h4>
-                                    <p>Posting is fast and easy.</p>
-                                    <p>${{ charge_amount_usd }} USD to display your job advertisement on the home page for 30 days</p>
-                                    <p>After filling out the form you will be redirected to Stripe to handle payment.</p>
+                                    <h2>Hire qualified chemists who know machine learning, data science, and programming</h2>
+                                </br>
+                                    <h4>Focused on chemistry jobs that require data science, machine learning, and programming</h4>
+                                    <p>Other sites are too general and drown out your chemistry specific posting, which makes it harder for qualified candidates to find your open position. Is that worth the >$400 USD they charge?</p>
+                                    <p>Speak directly to the exact candidates you are looking for; those who know how to apply software development, machine learning, and data science to chemistry problems.</p>
+                                    <h4>Posting is fast and easy, applying is fast and easy</h4>
+                                    <p>One form, one payment to post your job. Candidates don't need to register here to apply to your jobs -- they are only one simple click away from sending in their application to you.</p>
+                                    <p>Don't lose out on great candidates because a job board site puts up extra hurdles for them to apply to your job.</p>
+                                    <h4>What you receive</h4>
+                                    <p>Your job advertisement will be posted on our home page for 30 days, and we will share your job on Twitter. The cost is only ${{ charge_amount_usd }} USD.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </section>
     <section class="login-wrapper">
         <div class="container">
-			<div class="col-md-12 col-sm-8">
+            <div>
                 <form method="POST" action="">
                     <!-- hidden_tag() adds a csf token to protect from certain attacks -->
                     {{ form.hidden_tag() }}
@@ -140,5 +145,6 @@
                 </form>
     </div>
     </div>
+    </section>
     </section>
 {% endblock content %}

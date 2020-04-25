@@ -8,7 +8,7 @@ class JobPostForm(FlaskForm):
     poster_email = StringField('Your email for us to contact you*',
                                validators=[DataRequired(), Email(), Length(max=120)])
     title = StringField('Title of Job Posting*', validators=[DataRequired(), Length(max=140)])
-    body = TextAreaField('Job posting content*', validators=[DataRequired()],
+    body = TextAreaField('Job description*', validators=[DataRequired()],
                     widget=TextArea())
     apply_here_email = StringField('Email that applicant can use to apply/inquire (if applicable)',
                                    validators=[Email(), Optional(), Length(max=120)])

@@ -37,19 +37,28 @@ def post_job():
         # python datetime objects
         date_posted = datetime.today()
 
+        if current_user.is_authenticated:
+            _paid = True
+        else:
+            _paid = False
         post_to_db = Posts(title=title, poster_email=poster_email, body=body,
                            apply_here_email=apply_here_email,
                            job_location=job_location,
                            date_posted=date_posted,
                            link_to_application_site=link_to_application_site,
                            org_name=org_name,
-                           paid=False)
-
+                           paid=_paid)
         db.session.add(post_to_db)
         db.session.commit()
-        # flash('Thank you, your job posting has been submitted!', 'success')
-        hashed_post_id = hashids.encode(post_to_db.id)
-        return redirect(url_for('posts.pay', post_id=hashed_post_id))
+
+        if current_user.is_authenticated:
+            return redirect(url_for('main.home'))
+
+        else:
+            # flash('Thank you, your job posting has been submitted!', 'success')
+            hashed_post_id = hashids.encode(post_to_db.id)
+            return redirect(url_for('posts.pay', post_id=hashed_post_id))
+
     return render_template('post_job.html', title='Post a job', form=form,
                           charge_amount_usd=Config.CHARGE_AMOUNT_USD)
 

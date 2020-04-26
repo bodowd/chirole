@@ -10,8 +10,8 @@
 
 
     {% for post in posts %}
-    <a href="{{ url_for('posts.view_job', post_id=post.id) }}">
-            <h3>{{ post.title, post.id }}</h3>
+    <a href="{{ url_for('posts.view_job', post_id=post.hashed_post_id) }}">
+            <h3>{{ post.title, post.hashed_post_id }}</h3>
             <p><span class="company-name"><i class="fa fa-briefcase"></i>{{ post.org_name }}</span><span class="company-location"><i class="fa fa-map-marker"></i>{{ post.job_location }}</span><span class="package"><i class="fa fa-calendar"></i>{{'Posted: '}}{{ post.days_since_post }}</span></p>
     {% endfor %}
 </body>

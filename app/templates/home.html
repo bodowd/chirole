@@ -51,7 +51,7 @@
 									<img src="static/img/google.png" class="img-responsive" alt="" />
 								</div>
 							</div> -->
-							<a href="{{ url_for('posts.view_job', post_id=post.id) }}">
+							<a href="{{ url_for('posts.view_job', post_id=(post.hashed_post_id)) }}">
 							<div class="col-md-10 col-sm-8">
 								<div class="company-content">
 									<h3>{{ post.title }}</h3>

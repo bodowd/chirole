@@ -1,7 +1,11 @@
 from flask import Blueprint, render_template
 from flask_login import current_user
 from app.models import Posts
+from app import Config
 from datetime import datetime
+from hashids import Hashids
+
+hashids = Hashids(min_length=5, salt=Config.SECRET_KEY)
 
 main = Blueprint('main', __name__)
 
@@ -9,7 +13,6 @@ main = Blueprint('main', __name__)
 def home():
 
     posts = Posts.query.order_by(Posts.id.desc()).all()
-    print(posts)
 
     # not optimal. Should filter in the database query
     posts_for_display = []
@@ -28,6 +31,8 @@ def home():
 
         # not optimal. Should filter in the database query
         if days_since <= 30 and p.paid:
+            # pass the hashid so that jinja has it to send it back to backend upon click on job
+            p.hashed_post_id = hashids.encode(p.id)
             posts_for_display.append(p)
 
     # make it so you cannot view home page if logged in

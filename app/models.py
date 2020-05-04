@@ -13,7 +13,7 @@ class Posts(db.Model):
     body = db.Column(db.Text)
     title = db.Column(db.String(140))
     apply_here_email = db.Column(db.String(120), unique=False)
-    link_to_application_site = db.Column(db.String(100), unique=False)
+    link_to_application_site = db.Column(db.String(200), unique=False)
     job_location = db.Column(db.String(120), unique=False)
     org_name = db.Column(db.String(120), unique=False)
     paid = db.Column(db.Boolean)

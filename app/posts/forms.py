@@ -14,7 +14,7 @@ class JobPostForm(FlaskForm):
                                    validators=[Email(), Optional(), Length(max=120)])
     link_to_application_site = StringField('Link to your application site (if applicable) \
         Needs to include `http://www` i.e. http://www.yourwebsite.com',
-                                           validators=[Optional(), URL(), Length(max=100)])
+                                           validators=[Optional(), URL(), Length(max=200)])
     job_location = StringField('Job location(s)*', validators=[DataRequired(), Length(max=120)])
     org_name = StringField('Organization or Company name*',
                                     validators=[DataRequired(), Length(max=120)])
